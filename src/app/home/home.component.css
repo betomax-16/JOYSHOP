@@ -1,0 +1,77 @@
+
+.body {
+  font-family: "Oswald", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  background-color: #10151B;
+  background: url(https://images.pexels.com/photos/479820/pexels-photo-479820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  line-height: .95;
+  color: #66fcf1;
+  font-weight: 900;
+  font-size: 150px;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  text-align: center;
+}
+.descripcion {
+  font-size:20px ;
+  background-color:#DAE7F099;
+  border-radius: 5px;
+  margin-top: 80px;
+  padding: 20px 50px;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.btn {
+  margin: 0 auto;
+  width: 170px;
+  height: 60px;
+  padding: 6px 0 0 3px;
+  border: 2px solid #66fcf1;
+  border-radius: 2px;
+  background: none;
+  font-size: 16px;
+  line-height: 54px;
+  color: #fff;
+  letter-spacing: .25em;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-transition: background .4s, color .4s;
+  transition: background .4s, color .4s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #66fcf1;
+  color: #10151B;
+}
