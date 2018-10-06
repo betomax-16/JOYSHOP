@@ -1,6 +1,5 @@
 
 .body {
-  font-family: "Oswald", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   background-color: #10151B;
@@ -22,7 +21,7 @@
   line-height: .95;
   color: #66fcf1;
   font-weight: 900;
-  font-size: 150px;
+  font-size: 60px;
   text-transform: uppercase;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -74,4 +73,35 @@
 .btn:hover {
   background: #66fcf1;
   color: #10151B;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .title {
+    font-size: 80px;
+  }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 80px;
+  }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .title {
+    font-size: 100px;
+  }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .title {
+    font-size: 150px;
+  }
 }

@@ -1,0 +1,87 @@
+.footer {
+    background: url('../../assets/images/fondoFooter.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 15%;
+    padding-top: 25px;
+    color: #fff;
+    border-top: 1px solid #634464;
+}
+
+.footer h5 {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin: 15px auto;
+    width: 150px;
+    height: 40px;
+    padding: 3px 0;
+    border: 2px solid #c16c91;
+    border-radius: 5px;
+    background: none;
+    color: #fff;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .4s, color .4s;
+    cursor: pointer;
+}
+  
+.btn:hover {
+    background: #74304d7a;
+}
+
+.social {
+    margin-bottom: 15px;
+}
+
+.social img {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.footer-down {
+    width: 100%;
+    background-color: #74304d7a;
+    text-align: center;
+    padding: 20px 0;
+    color: #fff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .footer h5 {
+        font-size: 25px;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .footer h5 {
+        font-size: 30px;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .footer h5 {
+        font-size: 30px;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .footer h5 {
+        font-size: 30px;
+    }
+}
