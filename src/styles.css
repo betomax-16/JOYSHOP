@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
     font-family: "Oswald", sans-serif;
+}
+
+.modalLogin {
+    width: 300px;
+}
+
+.modalLogin .mat-dialog-container {
+    background: rgb(51, 143, 160);
+    color: #f6f6cd;
+    border-radius: 15px;
+    border: 2px solid #f6f6cd;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label,.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: #f6f6cd;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #bdbd9f;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #f6f6cd;
 }

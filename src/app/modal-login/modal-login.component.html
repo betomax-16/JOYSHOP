@@ -1,0 +1,14 @@
+<div class="content-modal">
+    <h1 class="title">Login</h1>
+    <form>
+        <div class="content-form">
+            <mat-form-field class="full-width input-login">
+                <input type="email" matInput placeholder="Email" [(ngModel)]="email" name="email">
+            </mat-form-field>
+            <mat-form-field class="full-width input-login">
+                <input type="password" matInput placeholder="Password" [(ngModel)]="pass" name="password">
+            </mat-form-field>
+            <button class="button ok" mat-stroked-button color="primary" (click)="login()">Ok</button>
+        </div>
+    </form>
+</div>
