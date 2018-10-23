@@ -1,20 +1,20 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
-import { ShareLoginService } from '../services/shareLogin.service';
-import { UserService } from '../services/user.service';
 import { User } from '../models/user';
+import { UserService } from '../services/user.service';
+import { ShareLoginService } from '../services/shareLogin.service';
 import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
-  selector: 'app-modal-login',
-  templateUrl: './modal-login.component.html',
-  styleUrls: ['./modal-login.component.css']
+  selector: 'app-modal-register-user',
+  templateUrl: './modal-register-user.component.html',
+  styleUrls: ['./modal-register-user.component.css']
 })
-export class ModalLoginComponent implements OnInit {
+export class ModalRegisterUserComponent implements OnInit {
   user: User;
 
-  constructor(public dialogRef: MatDialogRef<ModalLoginComponent>,
+  constructor(public dialogRef: MatDialogRef<ModalRegisterUserComponent>,
               public shareLoginService: ShareLoginService,
               public localStorageService: LocalStorageService,
               public userService: UserService,
@@ -27,9 +27,9 @@ export class ModalLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.userService.login(this.user).subscribe(res => {
-      this.showMessage('Login exitoso.', 2000);
+  save() {
+    this.userService.registrar(this.user).subscribe(res => {
+      this.showMessage('Registro exitoso.', 2000);
       this.dialogRef.close(res);
       this.localStorageService.set('token', res['token']);
       this.shareLoginService.sendLogin(true);

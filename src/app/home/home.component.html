@@ -1,7 +1,10 @@
 <div class="body">
 	<div class="intro">
 		<h1 class="title">WELCOME TO JoyShop</h1>
-		<button class="btn" (click)="showLogin()">Enter></button>
+		<div class="botonera">
+			<button class="btn" (click)="login()" *ngIf="!logged">Login</button>
+			<button class="btn" (click)="signup()" *ngIf="!logged">Registro</button>
+		</div>
 	</div>
 
 	<div class="descripcion">

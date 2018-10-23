@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  MongoDB: 'mongodb://admin:calico&12@ds053139.mlab.com:53139/joyshop',
+  SECRET_TOKEN: 'token'
 };

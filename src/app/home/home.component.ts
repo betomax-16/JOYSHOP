@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import { ShareLoginService } from '../services/shareLogin.service';
 import { MatDialog } from '@angular/material';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
+import { ModalRegisterUserComponent } from '../modal-register-user/modal-register-user.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +11,35 @@ import { ModalLoginComponent } from '../modal-login/modal-login.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public message: string;
+  logged: boolean;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public shareLoginService: ShareLoginService,
+              public authService: AuthService,
+              public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.message = 'Hello';
+    this.shareLoginService.loggedSource.subscribe(logged => {
+      this.logged = this.authService.isAuthenticated();
+    });
   }
 
-  showLogin() {
+  login() {
     const dialogRef = this.dialog.open( ModalLoginComponent,
       {
           panelClass: 'modalLogin'
-      } );
+      });
+
+    dialogRef.afterClosed()
+      .subscribe( result => {
+          console.log(result);
+      });
+  }
+
+  signup() {
+    const dialogRef = this.dialog.open( ModalRegisterUserComponent,
+      {
+          panelClass: 'modalSignup'
+      });
 
     dialogRef.afterClosed()
       .subscribe( result => {

@@ -8,21 +8,32 @@ body {
     width: 300px;
 }
 
+.modalSignup {
+    width: 400px;
+}
+
 .modalLogin .mat-dialog-container {
     background: rgb(51, 143, 160);
-    color: #f6f6cd;
+    color: #fff;
     border-radius: 15px;
-    border: 2px solid #f6f6cd;
+    border: 2px solid #fff;
+}
+
+.modalSignup .mat-dialog-container {
+    background: rgb(51, 143, 160);
+    color: #fff;
+    border-radius: 15px;
+    border: 2px solid #fff;
 }
 
 .mat-form-field.mat-focused .mat-form-field-label,.mat-form-field-appearance-legacy .mat-form-field-label {
-    color: #f6f6cd;
+    color: #fff;
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-underline {
-    background-color: #bdbd9f;
+    background-color: rgb(212, 212, 212);
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
-    background-color: #f6f6cd;
+    background-color: #fff;
 }
