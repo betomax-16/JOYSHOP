@@ -1,16 +1,18 @@
 <div class="body">
-	<div class="intro">
-		<h1 class="title">WELCOME TO JoyShop</h1>
-		<div class="botonera">
-			<button class="btn" (click)="login()" *ngIf="!logged">Login</button>
-			<button class="btn" (click)="signup()" *ngIf="!logged">Registro</button>
+	<div class="background">
+		<div class="intro">
+			<h1 class="title">WELCOME TO JoyShop</h1>
+			<div class="botonera">
+				<button class="btn" (click)="login()" *ngIf="!logged">Login</button>
+				<button class="btn" (click)="signup()" *ngIf="!logged">Registro</button>
+			</div>
 		</div>
-	</div>
-
-	<div class="descripcion">
-		<p>
-			Joyshop es la solución para poder mostrar productos online a través de un catalogo en unos sencillos pasos podrás tener listo tu catalogo para mostrar a clientes potenciales
-		</p>
+	
+		<div class="descripcion">
+			<p>
+				Joyshop es la solución para poder mostrar productos online a través de un catalogo en unos sencillos pasos podrás tener listo tu catalogo para mostrar a clientes potenciales
+			</p>
+		</div>
 	</div>	
+	<app-footer></app-footer>
 </div>
-<app-footer></app-footer>

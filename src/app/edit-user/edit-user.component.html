@@ -1,0 +1,42 @@
+<div class="content">
+    <h1 class="title-phone">Edición de datos personales.</h1>
+    <div class="photo">
+        <img src="https://images.vexels.com/media/users/3/137047/isolated/preview/5831a17a290077c646a48c4db78a81bb-perfil-de-usuario-blue-icon-by-vexels.png" alt="foto_perfil">
+    </div>    
+    <form>
+        <div class="content-form">
+            <h1 class="title">Edición de datos personales.</h1>
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Nombre" [(ngModel)]="user.name" name="name">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Apellidos" [(ngModel)]="user.lastname" name="lastname">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="email" matInput placeholder="Email" [(ngModel)]="user.email" name="email">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="password" matInput placeholder="Password" [(ngModel)]="user.password" name="password">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="tel" matInput placeholder="Teléfono" [(ngModel)]="user.phone" name="phone">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Sexo">
+                  <mat-option *ngFor="let sex of sexs" [value]="sex.value">{{sex.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button class="button ok" mat-stroked-button matTooltip="Update data" color="primary" (click)="save()">
+                <i class="material-icons">
+                    done
+                </i>
+            </button>
+        </div>
+    </form>
+</div>

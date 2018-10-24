@@ -26,14 +26,14 @@ body {
     border: 2px solid #fff;
 }
 
-.mat-form-field.mat-focused .mat-form-field-label,.mat-form-field-appearance-legacy .mat-form-field-label {
+.content-modal .mat-form-field.mat-focused .mat-form-field-label, .content-modal .mat-form-field-appearance-legacy .mat-form-field-label {
     color: #fff;
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-underline {
+.content-modal .mat-form-field-appearance-legacy .mat-form-field-underline {
     background-color: rgb(212, 212, 212);
 }
 
-.mat-form-field.mat-focused .mat-form-field-ripple {
+.content-modal .mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: #fff;
 }

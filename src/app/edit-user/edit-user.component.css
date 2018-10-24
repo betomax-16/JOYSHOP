@@ -1,0 +1,119 @@
+.content, .content-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+}
+
+.photo {
+    min-width: 200px;
+    height: 200px;
+    width: 200px;
+    background: #d5c7c7;
+    border: 2px dashed #b78d8d8c;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo img {
+    min-width: 180px;
+    height: 180px;
+    width: 180px;
+    border-radius: 100%;
+}
+
+form {
+    width: 100%;
+}
+
+.content-form {
+    padding: 25px 40px;
+}
+
+.button {
+    margin-top: 15px;
+    color: #fff;
+}
+
+.ok {
+    background-color:rgb(205, 77, 162);
+    width: 75px;
+}
+
+.ok:hover {
+    background-color: rgb(156, 59, 123);
+}
+
+.title,.title-phone {
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 40px;
+    color: #5e3c5d;
+}
+
+.title {
+    display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .content {
+        flex-direction: row;
+        align-items: initial;
+    }
+    .title {
+        display: block;
+    }
+    .title-phone {
+        display: none;
+    }
+    .photo {
+        margin: 60px 5px 0 35px;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .content {
+        flex-direction: row;
+        align-items: initial;
+    }
+    .title {
+        display: block;
+    }
+    .title-phone {
+        display: none;
+    }
+    .photo {
+        margin: 60px 5px 0 35px;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .content {
+        flex-direction: row;
+        align-items: initial;
+    }
+    .title {
+        display: block;
+    }
+    .title-phone {
+        display: none;
+    }
+    .photo {
+        margin: 60px 5px 0 35px;
+    }
+}

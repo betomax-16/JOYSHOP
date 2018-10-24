@@ -6,9 +6,11 @@ import { NotAuthGuardService as NotAuthGuard } from './auth/notAuth-guard.servic
 /*Components App Import*/
 import { HomeComponent } from './home/home.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full'},
+    { path: 'user/edit', component: EditUserComponent, canActivate: [AuthGuard] },
     { path: 'comingsoon', component: ComingSoonComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
   ];

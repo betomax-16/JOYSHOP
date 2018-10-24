@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalRegisterUserComponent } from './modal-register-user/modal-register-user.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -30,7 +31,8 @@ import { UserService } from './services/user.service';
     FooterComponent,
     ModalLoginComponent,
     ModalRegisterUserComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    EditUserComponent
   ],
   imports: [
     AppRoutingModule,
