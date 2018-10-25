@@ -36,9 +36,13 @@ export class ModalLoginComponent implements OnInit {
       this.shareLoginService.sendUser(res['user']);
       this.router.navigate(['comingsoon']);
     }, error => {
-      error.error.errors.forEach(err => {
-        this.showMessage(err.message, 5000);
-      });
+      if (error.error.errors) {
+        error.error.errors.forEach(err => {
+          this.showMessage(err.message, 5000);
+        });
+      } else {
+        this.showMessage(error.error.message, 5000);
+      }
     });
   }
 

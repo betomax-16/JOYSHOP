@@ -8,6 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +27,9 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { NotAuthGuardService as NotAuthGuard } from './auth/notAuth-guard.service';
 import { ShareLoginService } from './services/shareLogin.service';
 import { UserService } from './services/user.service';
+import { UploadService } from './services/upload.service';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,14 +51,18 @@ import { UserService } from './services/user.service';
     LocalStorageModule.withConfig( {
       prefix: '',
       storageType: 'localStorage'
-    })
+    }),
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule,
   ],
   providers: [
     AuthService,
     AuthGuard,
     NotAuthGuard,
     ShareLoginService,
-    UserService
+    UserService,
+    UploadService
   ],
   entryComponents: [ModalLoginComponent, ModalRegisterUserComponent],
   bootstrap: [AppComponent]

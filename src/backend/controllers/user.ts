@@ -159,8 +159,7 @@ function createUser(req, res, errors: Array<FormatError>) {
                             {nombre: user.name, link: getHostName(req) + '/api/confirm/' + user._id});
 
         return res.status(201).send({
-            token: TokenService.createToken(user),
-            user: user
+            token: TokenService.createToken(user)
         });
       });
     } else {
@@ -288,7 +287,7 @@ function getUser(req, res) {
       return res.status(404).send({errors});
     }
     if (usuario.password) { delete usuario.password; }
-    return res.status(200).send({usuario});
+    return res.status(200).send(usuario);
   });
 }
 
@@ -316,7 +315,7 @@ function updateUser(req, res) {
     usuario.save((error, updatedUsuario) => {
         if (error) { return res.status(500).send({error}); }
         if (updatedUsuario.password) { delete updatedUsuario.password; }
-        res.status(200).send({updatedUsuario});
+        res.status(200).send(updatedUsuario);
     });
   });
 }
@@ -334,7 +333,7 @@ function getUserPublic(req, res) {
       return res.status(404).send({errors});
     }
     if (usuario.password) { delete usuario.password; }
-    return res.status(200).send({usuario});
+    return res.status(200).send(usuario);
   });
 }
 

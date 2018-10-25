@@ -23,12 +23,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule( {
     // tslint:disable-next-line:max-line-length
-    exports: [ MatBadgeModule, MatTableModule, MatAutocompleteModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatDialogModule, ReactiveFormsModule, FormsModule, BrowserAnimationsModule, MatListModule, MatDividerModule, MatExpansionModule, MatTabsModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCardModule, MatCheckboxModule, MatPaginatorModule, MatTooltipModule ],
+    exports: [ MatBadgeModule, MatTableModule, MatAutocompleteModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatDialogModule, ReactiveFormsModule, FormsModule, BrowserAnimationsModule, MatListModule, MatDividerModule, MatExpansionModule, MatTabsModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCardModule, MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatProgressBarModule ],
     // tslint:disable-next-line:max-line-length
-    imports: [ MatBadgeModule, MatTableModule, MatAutocompleteModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatDialogModule, ReactiveFormsModule, FormsModule, BrowserAnimationsModule, MatListModule, MatDividerModule, MatExpansionModule, MatTabsModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCardModule, MatCheckboxModule, MatPaginatorModule, MatTooltipModule ],
+    imports: [ MatBadgeModule, MatTableModule, MatAutocompleteModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatDialogModule, ReactiveFormsModule, FormsModule, BrowserAnimationsModule, MatListModule, MatDividerModule, MatExpansionModule, MatTabsModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatRadioModule, MatButtonModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCardModule, MatCheckboxModule, MatPaginatorModule, MatTooltipModule, MatProgressBarModule ],
 } )
 export class MaterialModule {
 }

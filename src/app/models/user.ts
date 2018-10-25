@@ -6,9 +6,10 @@ export class User {
         public email?: string,
         public sex?: string,
         public password?: string,
-        public birthdate?: Date,
-        public createdAt?: Date,
+        public birthdate?: string,
+        public createdAt?: string,
         public photo?: string,
-        public confirm?: boolean
+        public confirm?: boolean,
+        public _id?: string
     ) {}
 }

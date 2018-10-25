@@ -15,17 +15,18 @@
     width: 200px;
     background: #d5c7c7;
     border: 2px dashed #b78d8d8c;
-    border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .photo img {
-    min-width: 180px;
-    height: 180px;
-    width: 180px;
     border-radius: 100%;
+    cursor: pointer;
+    width: auto;
+    height: 100%;
 }
 
 form {
@@ -61,6 +62,14 @@ form {
     display: none;
 }
 
+.file {
+    display: none;
+}
+
+.mat-progress-bar {
+    margin-top: 10px;
+    margin-left: 25px;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {} 
 
