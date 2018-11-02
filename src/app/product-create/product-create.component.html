@@ -1,0 +1,27 @@
+<div class="content">
+    <h1 class="title">Nuevo producto.</h1>   
+    <form>
+        <div class="content-form">
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Nombre" [(ngModel)]="product.name" name="name">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <textarea matInput placeholder="Descripción" [(ngModel)]="product.description" name="description"></textarea>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <span matPrefix>$ &nbsp;
+                </span>
+                <input type="text" matInput placeholder="Precio" [(ngModel)]="product.price" name="price">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Stock" [(ngModel)]="product.stock" name="stock" min="1">
+            </mat-form-field>
+            <!-- <input #inputFile class="file" type="file" name="photo" (change)="onChangeFile($event)" accept="image/*"> -->
+            <button class="button ok" mat-stroked-button matTooltip="Save product" color="primary" (click)="save()">
+                <i class="material-icons">
+                    done
+                </i>
+            </button>
+        </div>
+    </form>
+</div>

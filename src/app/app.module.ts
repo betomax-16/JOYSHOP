@@ -20,6 +20,10 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalRegisterUserComponent } from './modal-register-user/modal-register-user.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -28,6 +32,7 @@ import { NotAuthGuardService as NotAuthGuard } from './auth/notAuth-guard.servic
 import { ShareLoginService } from './services/shareLogin.service';
 import { UserService } from './services/user.service';
 import { UploadService } from './services/upload.service';
+import { ProductService } from './services/product.service';
 
 import { environment } from '../environments/environment';
 
@@ -39,7 +44,11 @@ import { environment } from '../environments/environment';
     ModalLoginComponent,
     ModalRegisterUserComponent,
     ComingSoonComponent,
-    EditUserComponent
+    EditUserComponent,
+    ProductListComponent,
+    ProductCreateComponent,
+    ModalConfirmComponent,
+    ProductEditComponent
   ],
   imports: [
     AppRoutingModule,
@@ -62,9 +71,10 @@ import { environment } from '../environments/environment';
     NotAuthGuard,
     ShareLoginService,
     UserService,
-    UploadService
+    UploadService,
+    ProductService
   ],
-  entryComponents: [ModalLoginComponent, ModalRegisterUserComponent],
+  entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

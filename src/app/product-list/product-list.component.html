@@ -1,0 +1,34 @@
+<div class="my-products">
+    <h1>Mis productos</h1>
+    <div class="results-products">
+        <mat-card class="example-card" *ngFor="let product of products">
+            <mat-card-header>
+                <mat-card-title>{{product.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p><span>Descripción: </span>{{(product.description.length>50)? (product.description | slice:0:50)+'..':(product.description)}}</p>
+                <p><span>Precio: </span>{{'$' + product.price}}</p>
+                <p><span>Stock: </span>{{product.stock}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button matTooltip="Edit product" (click)="update(product)">
+                    <i class="material-icons">
+                        edit
+                    </i>Editar
+                </button>
+                <button mat-button matTooltip="Delete product" class="delete" (click)="delete(product)">
+                    <i class="material-icons">
+                        cancel
+                    </i>Eliminar
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+<button class="add" 
+        mat-fab color="accent"
+        matTooltip="Add new product"
+        (click)="add()">
+    <i class="material-icons">add</i>
+</button>

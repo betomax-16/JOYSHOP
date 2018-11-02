@@ -7,10 +7,16 @@ import { NotAuthGuardService as NotAuthGuard } from './auth/notAuth-guard.servic
 import { HomeComponent } from './home/home.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full'},
     { path: 'user/edit', component: EditUserComponent, canActivate: [AuthGuard] },
+    { path: 'user/products', component: ProductListComponent, canActivate: [AuthGuard] },
+    { path: 'user/products/new', component: ProductCreateComponent, canActivate: [AuthGuard] },
+    { path: 'user/products/edit/:id', component: ProductEditComponent, canActivate: [AuthGuard] },
     { path: 'comingsoon', component: ComingSoonComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
   ];

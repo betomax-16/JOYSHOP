@@ -26,7 +26,8 @@
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
             <div class="nav-list-logout" (click)="logout()" *ngIf="logged"><span>Logout</span></div>
-            <a mat-list-item routerLink="user/edit">Editar</a>
+            <a mat-list-item routerLink="user/edit">Perfil</a>
+            <a mat-list-item routerLink="user/products">Mis productos</a>
             <a mat-list-item routerLink="comingsoon">Otros</a>
         </mat-nav-list>
         </mat-sidenav>
