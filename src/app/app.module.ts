@@ -7,6 +7,7 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng4FilesModule } from './ng4-files';
 
 // Firebase
 import { AngularFireModule } from 'angularfire2';
@@ -33,6 +34,7 @@ import { ShareLoginService } from './services/shareLogin.service';
 import { UserService } from './services/user.service';
 import { UploadService } from './services/upload.service';
 import { ProductService } from './services/product.service';
+import { TokenService } from './services/token.service';
 
 import { environment } from '../environments/environment';
 
@@ -64,6 +66,7 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule,
+    Ng4FilesModule
   ],
   providers: [
     AuthService,
@@ -72,7 +75,8 @@ import { environment } from '../environments/environment';
     ShareLoginService,
     UserService,
     UploadService,
-    ProductService
+    ProductService,
+    TokenService
   ],
   entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent],
   bootstrap: [AppComponent]

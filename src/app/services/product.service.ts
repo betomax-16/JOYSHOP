@@ -2,13 +2,17 @@ import {LocalStorageService} from 'angular-2-local-storage';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Product} from '../models/product';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 
 
 @Injectable()
 export class ProductService {
     private headers: HttpHeaders;
+    ref: AngularFireStorageReference;
+    task: AngularFireUploadTask;
 
     constructor(private http: HttpClient,
+                private afStorage: AngularFireStorage,
                 private localStorageService: LocalStorageService) {
 
     }
@@ -32,12 +36,12 @@ export class ProductService {
 
     insert(product: Product) {
         this.newHeader();
-        return this.http.post(`/api/product`, product, {headers: this.headers});
+        return this.http.post<Product>(`/api/product`, product, {headers: this.headers});
     }
 
     update(product: Product) {
         this.newHeader();
-        return this.http.put(`/api/product/${product._id}`, product, {headers: this.headers});
+        return this.http.put<Product>(`/api/product/${product._id}`, product, {headers: this.headers});
     }
 
     remove(product: Product) {
@@ -57,4 +61,14 @@ export class ProductService {
         return this.http.get<Product[]>('/api/search', {params: httpParams});
     }
 
+    upload(idUser: string, idProduct: string, idImage: string, image: File) {
+        this.ref = this.afStorage.ref(`products/${idUser}/${idProduct}/${idImage}`);
+        this.task = this.ref.put(image);
+        return this.task;
+    }
+
+    getUrl(idUser: string, idProduct: string, idImage: string) {
+    this.ref = this.afStorage.ref(`products/${idUser}/${idProduct}/${idImage}`);
+    return this.ref.getDownloadURL();
+    }
 }

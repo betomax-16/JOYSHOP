@@ -17,6 +17,23 @@
                 <input type="number" matInput placeholder="Stock" [(ngModel)]="product.stock" name="stock" min="1">
             </mat-form-field>
             <!-- <input #inputFile class="file" type="file" name="photo" (change)="onChangeFile($event)" accept="image/*"> -->
+            <ng4-files-click (filesSelect)="filesSelect($event)" class="button upload">
+                <i class="material-icons">cloud_upload</i>
+                <span class="message"> Subir fotos</span>
+            </ng4-files-click>
+            <ng4-files-drop (filesSelect)="filesSelect($event)">
+                <div class="file-drag">
+                    <div *ngIf="!selectedFiles.length" class="empty-area">
+                        <span>Drag and drop files</span>
+                    </div>
+                    <div *ngIf="selectedFiles.length" class="drag-area">
+                        <div class="image-preview" *ngFor="let file of selectedFiles">
+                            <div class="close" matTooltip="Remove image" (click)="removeImage(file)"><i class="material-icons">cancel</i></div>
+                            <img [src]="file.url" alt="{{file.name}}">
+                        </div>
+                    </div>
+                </div>
+            </ng4-files-drop>
             <button class="button ok" mat-stroked-button matTooltip="Save product" color="primary" (click)="save()">
                 <i class="material-icons">
                     done
