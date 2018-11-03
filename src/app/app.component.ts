@@ -73,7 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   search() {
-
+    this.router.navigate(['search'], { queryParams: { q: this.searchText } });
   }
 
   ngOnDestroy(): void {

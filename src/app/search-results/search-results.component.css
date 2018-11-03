@@ -1,0 +1,124 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.content-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+h1 {
+    font-size: 45px;
+    color: rgb(216, 214, 214);
+}
+
+.example-card {
+    max-width: 400px;
+    margin: 10px;
+    display: inline-block;
+}
+  
+.example-header-image {
+    background-image: url('https://images.vexels.com/media/users/3/137047/isolated/preview/5831a17a290077c646a48c4db78a81bb-perfil-de-usuario-blue-icon-by-vexels.png');
+    background-size: cover;
+    position: relative;
+    background-color: aliceblue;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.example-header-image img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    margin: auto;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    z-index: 0;
+}
+
+.mat-card>.mat-card-actions:last-child {
+    display: flex;
+}
+
+.mat-card-actions .mat-button, .mat-card-actions .mat-raised-button {
+    width: 100%;
+    background-color: #dfc9de;
+    color: #846183;
+    margin: 0 5px;
+}
+
+.mat-button.delete {
+    background-color: #eaa0a0 !important;
+    color: #fff !important;
+}
+
+.mat-card-header .mat-card-title {
+    text-transform: capitalize;
+}
+
+.mat-card-content span, .mat-card-subtitle span{
+    font-weight: bold;
+}
+
+.my-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results-products {
+    display: grid;
+    padding: 10px 40px;
+}
+
+.add {
+    position: fixed;
+    background-color: rgb(186, 125, 184);
+    right: 0;
+    bottom: 0;
+    margin-bottom: 50px;
+    margin-right: 40px;
+}
+
+.add:hover {
+    background-color: rgb(159, 107, 158);
+}
+
+.userName {
+    cursor: pointer;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .results-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .results-products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .results-products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

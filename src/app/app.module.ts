@@ -25,6 +25,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { UserDataComponent } from './user-data/user-data.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -50,7 +52,9 @@ import { environment } from '../environments/environment';
     ProductListComponent,
     ProductCreateComponent,
     ModalConfirmComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    SearchResultsComponent,
+    UserDataComponent
   ],
   imports: [
     AppRoutingModule,

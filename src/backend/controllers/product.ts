@@ -234,12 +234,15 @@ function search(req, res) {
   const match2 = { user: { $ne: [] } };
   // Agregar filtros
   match1 = UrlQueryService.filter(req.query, match1);
+  const unwind = { $unwind : '$user' };
+
   // creando estructura del query
   let query;
   query = Product.aggregate([
     { $match: match1 },
     { $lookup: lookup },
-    { $match: match2 }
+    { $match: match2 },
+    unwind
   ]);
 
   // Agregar caracterristicas de paginacion

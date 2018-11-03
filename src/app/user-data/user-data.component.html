@@ -1,0 +1,35 @@
+<div class="content">
+    <h1 class="title-phone">Datos del artista.</h1>
+    <div>
+        <div class="photo">
+            <img [src]="imageUrl" alt="foto_perfil">
+        </div>
+    </div>    
+    <form>
+        <div class="content-form">
+            <h1 class="title">Datos del artista.</h1>
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Nombre" [(ngModel)]="user.name" name="name" disabled>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Apellidos" [(ngModel)]="user.lastname" name="lastname" disabled>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="email" matInput placeholder="Email" [(ngModel)]="user.email" name="email" disabled>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="tel" matInput placeholder="Teléfono" [(ngModel)]="user.phone" name="phone" disabled>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Sexo" [(value)]="user.sex" disabled>
+                  <mat-option *ngFor="let sex of sexs" [value]="sex.value">{{sex.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

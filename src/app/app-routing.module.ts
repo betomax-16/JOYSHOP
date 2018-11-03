@@ -10,6 +10,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { UserDataComponent } from './user-data/user-data.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full'},
@@ -17,6 +19,8 @@ const routes: Routes = [
     { path: 'user/products', component: ProductListComponent, canActivate: [AuthGuard] },
     { path: 'user/products/new', component: ProductCreateComponent, canActivate: [AuthGuard] },
     { path: 'user/products/edit/:id', component: ProductEditComponent, canActivate: [AuthGuard] },
+    { path: 'search', component: SearchResultsComponent },
+    { path: 'artist/:id', component: UserDataComponent },
     { path: 'comingsoon', component: ComingSoonComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
   ];
