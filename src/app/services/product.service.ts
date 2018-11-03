@@ -68,7 +68,12 @@ export class ProductService {
     }
 
     getUrl(idUser: string, idProduct: string, idImage: string) {
-    this.ref = this.afStorage.ref(`products/${idUser}/${idProduct}/${idImage}`);
-    return this.ref.getDownloadURL();
+        this.ref = this.afStorage.ref(`products/${idUser}/${idProduct}/${idImage}`);
+        return this.ref.getDownloadURL();
+    }
+
+    removeImage(idUser: string, idProduct: string, idImage: string) {
+        this.ref = this.afStorage.ref(`products/${idUser}/${idProduct}/${idImage}`);
+        return this.ref.delete();
     }
 }

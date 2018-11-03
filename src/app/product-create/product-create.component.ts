@@ -17,9 +17,10 @@ export class ProductCreateComponent implements OnInit {
 
   product: Product;
   selectedFiles;
+  selectedFilesNames: string[];
 
   private testConfig: Ng4FilesConfig = {
-    acceptExtensions: ['jpej', 'jpg', 'png'],
+    acceptExtensions: ['jpeg', 'jpg', 'png'],
     maxFilesCount: 5,
     maxFileSize: 5120000,
     totalFilesSize: 10120000
@@ -32,6 +33,7 @@ export class ProductCreateComponent implements OnInit {
               private router: Router) {
     this.product = new Product();
     this.selectedFiles = [];
+    this.selectedFilesNames = [];
   }
 
   ngOnInit() {
@@ -47,21 +49,34 @@ export class ProductCreateComponent implements OnInit {
             + currentdate.getMinutes()
             + currentdate.getSeconds()
             + currentdate.getMilliseconds()
-            + Math.random();
+            + Math.random() * 100000000000000000;
     return datetime;
   }
 
   save() {
-    this.productService.insert(this.product).subscribe(product => {
-      const idUser = this.tokenService.decodeToken().sub;
-      const idProduct = product._id;
-      this.selectedFiles.forEach(file => {
-        const idFile = this.obtenerFechaHora();
-        this.productService.upload(idUser, idProduct, idFile, file);
+    if (this.existImages()) {
+      this.productService.insert(this.product).subscribe(product => {
+        const idUser = this.tokenService.decodeToken().sub;
+        const idProduct = product._id;
+        const actions = this.selectedFiles.map(file => this.productService.upload(idUser, idProduct, file.idName, file));
+        const results = Promise.all(actions);
+
+        results.then(data => {
+          this.showMessage('Product created successfully.', 3000);
+          this.router.navigate(['user/products']);
+        });
+      }, error => {
+        if (error.error.errors) {
+          error.error.errors.forEach(err => {
+            this.showMessage(err.message, 3000);
+          });
+        } else {
+          this.showMessage(error.message, 3000);
+        }
       });
-      this.showMessage('Product created successfully.', 3000);
-      this.router.navigate(['user/products']);
-    }, error =>  this.showMessage(error.message, 3000));
+    } else {
+      this.showMessage('You need at least one image.', 3000);
+    }
   }
 
   showMessage(message: string, duration: number) {
@@ -82,22 +97,29 @@ export class ProductCreateComponent implements OnInit {
     } else {
       this.selectedFiles = selectedFiles.files;
     }
-    this.readURL(this.selectedFiles);
-    console.log(this.selectedFiles);
-    // this.selectedFiles = Array.from(selectedFiles.files).map(file => file.name);
+    this.readURL(this.selectedFiles, this.obtenerFechaHora, this.selectedFilesNames);
+    this.product.images = this.selectedFilesNames;
   }
 
   removeImage(file) {
     this.selectedFiles = Array.from(this.selectedFiles).filter(fileS => fileS !== file);
+    this.selectedFilesNames = Array.from(this.selectedFiles).map(fileS => fileS['idName']);
+    this.product.images = this.selectedFilesNames;
   }
 
-  readURL(files) {
+  readURL(files, fn, arrayIdName) {
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = function(e) {
         file['url'] = e.target['result'];
+        file['idName'] = fn();
+        arrayIdName.push(file['idName']);
       };
       reader.readAsDataURL(file);
     });
+  }
+
+  existImages() {
+    return this.selectedFiles.length > 0;
   }
 }

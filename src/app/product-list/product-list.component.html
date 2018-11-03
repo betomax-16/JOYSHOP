@@ -5,7 +5,7 @@
             <mat-card-header>
                 <mat-card-title>{{product.name}}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <img mat-card-image [src]="product.images[0]" alt="Photo of a Shiba Inu">
             <mat-card-content>
                 <p><span>Descripción: </span>{{(product.description.length>50)? (product.description | slice:0:50)+'..':(product.description)}}</p>
                 <p><span>Precio: </span>{{'$' + product.price}}</p>

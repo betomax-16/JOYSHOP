@@ -11,6 +11,7 @@ export class Product {
         public createdAt?: string,
         public updatedAt?: string,
         public user?: User,
-        public images?: string[]
+        public images?: string[],
+        public imagesFiles?: File[]
     ) {}
 }
