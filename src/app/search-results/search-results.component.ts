@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, PageEvent } from '@angular/material';
 import { TokenService } from '../services/token.service';
 import { UploadService } from '../services/upload.service';
 import { Search } from '../models/search';
@@ -15,6 +15,7 @@ import { Search } from '../models/search';
 export class SearchResultsComponent implements OnInit {
 
   products: Product[];
+  totalResults = 0;
 
   constructor(private productService: ProductService,
               public notificacionSnackBar: MatSnackBar,
@@ -43,6 +44,7 @@ export class SearchResultsComponent implements OnInit {
     this.productService.search(params).subscribe(
         res => {
           this.products = res['products'];
+          this.totalResults = res['count'];
           this.products.forEach(product => {
             const idUser = product.idUser;
             const idProduct = product._id;
@@ -69,5 +71,14 @@ export class SearchResultsComponent implements OnInit {
 
   goArtist(id) {
     this.router.navigate(['artist', id]);
+  }
+
+  movePage(event: PageEvent) {
+    // total de resultados
+    console.log(event.length);
+    // elementos a cargar por pagina
+    console.log(event.pageSize);
+    // indice de l a pagina de acuedo a la cantidad de elementos por pagina
+    console.log(event.pageIndex);
   }
 }

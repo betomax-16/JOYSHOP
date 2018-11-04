@@ -24,6 +24,10 @@
         </mat-card>
     </div>
 </div>
+<mat-paginator [length]="totalResults"
+    (page)="movePage($event)"
+    [pageSize]="20">
+</mat-paginator>
 <div *ngIf="!existResults()" class="content-empty">
     <h1>Sin resultados.</h1>
 </div>
