@@ -34,6 +34,10 @@ export class ProductService {
         return this.http.get<Product>(`/api/product/${id}`, {headers: this.headers});
     }
 
+    getPublicProduct(id) {
+        return this.http.get<Product>(`/api/public/product/${id}`);
+    }
+
     insert(product: Product) {
         this.newHeader();
         return this.http.post<Product>(`/api/product`, product, {headers: this.headers});

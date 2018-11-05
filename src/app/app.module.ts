@@ -27,6 +27,7 @@ import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { UserDataComponent } from './user-data/user-data.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -54,7 +55,8 @@ import { environment } from '../environments/environment';
     ModalConfirmComponent,
     ProductEditComponent,
     SearchResultsComponent,
-    UserDataComponent
+    UserDataComponent,
+    ProductDetailComponent
   ],
   imports: [
     AppRoutingModule,

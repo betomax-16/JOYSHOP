@@ -117,6 +117,23 @@ function getProduct(req, res) {
   });
 }
 
+function getPublicProduct(req, res) {
+  const idProduct = req.params.idProduct;
+  const errors: Array<FormatError> = [];
+  const errorIdProduct: FormatError = validateMongoId(idProduct, 'idProduct');
+  if (errorIdProduct) { errors.push(errorIdProduct); }
+  if (errors.length > 0) { return res.status(500).send({errors}); }
+  Product.findById(idProduct, (error, product) => {
+    if (error) { return res.status(500).send({error}); }
+    if (product) {
+      return res.status(200).send(product);
+    } else {
+      errors.push(new FormatError('idProduct', 'Product not found.'));
+      return res.status(404).send({errors});
+    }
+  });
+}
+
 function createProduct(req, res) {
   const idUsuario = req.user;
   const errors: Array<FormatError> = validate(req);
@@ -278,6 +295,7 @@ function search(req, res) {
 export const ProductoCtrl = {
   getProducts,
   getProduct,
+  getPublicProduct,
   createProduct,
   updateProduct,
   deleteProduct,

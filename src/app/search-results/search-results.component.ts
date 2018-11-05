@@ -73,6 +73,10 @@ export class SearchResultsComponent implements OnInit {
     this.router.navigate(['artist', id]);
   }
 
+  goDetail(product: Product) {
+    this.router.navigate(['product', product._id]);
+  }
+
   movePage(event: PageEvent) {
     // total de resultados
     console.log(event.length);

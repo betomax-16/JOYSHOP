@@ -30,6 +30,8 @@ api.route('/product/:idProduct')
     .get( MiddlewareAuth.isAuth, ProductoCtrl.getProduct )
     .put( MiddlewareAuth.isAuth, ProductoCtrl.updateProduct )
     .delete( MiddlewareAuth.isAuth, ProductoCtrl.deleteProduct );
+api.route('/public/product/:idProduct')
+    .get( ProductoCtrl.getPublicProduct );
 api.route('/search')
     .get( ProductoCtrl.search );
 

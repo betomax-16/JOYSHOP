@@ -12,6 +12,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { UserDataComponent } from './user-data/user-data.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'user/products/edit/:id', component: ProductEditComponent, canActivate: [AuthGuard] },
     { path: 'search', component: SearchResultsComponent },
     { path: 'artist/:id', component: UserDataComponent },
+    { path: 'product/:id', component: ProductDetailComponent },
     { path: 'comingsoon', component: ComingSoonComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
   ];
