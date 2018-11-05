@@ -37,3 +37,8 @@ body {
 .content-modal .mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: #fff;
 }
+
+.modalImage .mat-dialog-container {
+    box-shadow: none;
+    background: none;
+}

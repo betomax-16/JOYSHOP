@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { ModalImageComponent } from '../modal-image/modal-image.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private productService: ProductService,
               public notificacionSnackBar: MatSnackBar,
+              public dialog: MatDialog,
               private route: ActivatedRoute) {
         this.product = new Product();
         this.listFilesFirebase = [];
@@ -57,5 +59,12 @@ export class ProductDetailComponent implements OnInit {
 
   onlyImage() {
       return this.listFilesFirebase.length === 0 || this.listFilesFirebase.length === 1;
+  }
+
+  showImage() {
+    const dialogRef = this.dialog.open( ModalImageComponent, { panelClass: 'modalImage' });
+    dialogRef.componentInstance.listFilesFirebase = this.listFilesFirebase;
+    dialogRef.componentInstance.imageSelected = this.imageSelected;
+    dialogRef.componentInstance.index = this.index;
   }
 }

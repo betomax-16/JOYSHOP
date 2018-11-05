@@ -1,0 +1,50 @@
+.carousel-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    max-height: 850px;
+    overflow: hidden;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.button .material-icons {
+    font-size: 50px;
+}
+
+.carousel-content .image {
+    width: 100%;
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.carousel-content .image img {
+    width: 100%;
+    height: auto;
+}
+
+.before i, .next i {
+    cursor: pointer;
+}
+
+.before {
+    order: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.next {
+    order: 3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}

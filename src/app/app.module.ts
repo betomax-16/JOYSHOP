@@ -28,6 +28,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ModalImageComponent } from './modal-image/modal-image.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -56,7 +57,8 @@ import { environment } from '../environments/environment';
     ProductEditComponent,
     SearchResultsComponent,
     UserDataComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ModalImageComponent
   ],
   imports: [
     AppRoutingModule,
@@ -84,7 +86,7 @@ import { environment } from '../environments/environment';
     ProductService,
     TokenService
   ],
-  entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent],
+  entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent, ModalImageComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

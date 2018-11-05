@@ -1,0 +1,11 @@
+<div class="carousel-content">
+  <div class="image">
+      <img [src]="imageSelected" alt="">
+  </div>
+  <div *ngIf="!onlyImage()" class="button before">
+      <i class="material-icons" matTooltip="Previous image." (click)="before()">navigate_before</i>
+  </div>
+  <div *ngIf="!onlyImage()" class="button next">
+      <i class="material-icons" matTooltip="Next image." (click)="next()">navigate_next</i>
+  </div>
+</div>

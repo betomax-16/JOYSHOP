@@ -2,7 +2,7 @@
     <h1 class="title">{{product.name}}</h1>
     <div class="basic-info-product">
         <div class="carousel-content">
-            <div class="image">
+            <div class="image" (click)="showImage()">
                 <img [src]="imageSelected" alt="">
             </div>
             <div *ngIf="!onlyImage()" class="button before">
