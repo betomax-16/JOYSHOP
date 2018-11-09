@@ -1,0 +1,14 @@
+<div class="content-modal">
+    <h1 class="title">Filtro</h1>
+    <form>
+        <div class="content-form">
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Precio Min." [(ngModel)]="min" name="min">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Precio Max." [(ngModel)]="max" name="max">
+            </mat-form-field>
+            <button class="button ok" mat-stroked-button color="primary" (click)="sendFilter()">Ok</button>
+        </div>
+    </form>
+</div>

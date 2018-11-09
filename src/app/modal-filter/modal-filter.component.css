@@ -1,0 +1,28 @@
+.content-modal,.content-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    margin-top: 15px;
+    color: #fff;
+}
+
+.ok {
+    background-color:rgb(205, 77, 162);
+    width: 75px;
+}
+
+.ok:hover {
+    background-color: rgb(156, 59, 123);
+}
+
+.title {
+    color: #fff;
+}
+
+.full-width {
+    display: block;
+}

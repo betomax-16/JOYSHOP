@@ -6,6 +6,9 @@ export class Search {
     public 'stock': number;
     public 'stock>': number;
     public 'stock<': number;
+    public 'limit': number;
+    public 'offset': number;
+    public 'sort': string;
 
      constructor(
          q?: string,
@@ -15,6 +18,9 @@ export class Search {
          stock?: number,
          gtStock?: number,
          ltStock?: number,
+         limit?: number,
+         offset?: number,
+         sort?: string,
      ) {
          if (q) { this.q = q; }
          if (price) { this.price = price; }
@@ -23,5 +29,8 @@ export class Search {
          if (stock) { this.stock = stock; }
          if (gtStock) { this['stock>'] = gtStock; }
          if (ltStock) { this['stock<'] = ltStock; }
+         if (limit) { this.limit = limit; }
+         if (offset) { this.offset = offset; }
+         if (sort) { this.sort = sort; }
      }
 }

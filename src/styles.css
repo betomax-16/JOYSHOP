@@ -12,6 +12,10 @@ body {
     width: 400px;
 }
 
+.modalFilter {
+    width: 300px;
+}
+
 .modalLogin .mat-dialog-container {
     background: rgb(51, 143, 160);
     color: #fff;
@@ -20,6 +24,13 @@ body {
 }
 
 .modalSignup .mat-dialog-container {
+    background: rgb(51, 143, 160);
+    color: #fff;
+    border-radius: 15px;
+    border: 2px solid #fff;
+}
+
+.modalFilter .mat-dialog-container {
     background: rgb(51, 143, 160);
     color: #fff;
     border-radius: 15px;

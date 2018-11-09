@@ -6,6 +6,7 @@ import { MatSnackBar, MatDialog, PageEvent } from '@angular/material';
 import { TokenService } from '../services/token.service';
 import { UploadService } from '../services/upload.service';
 import { Search } from '../models/search';
+import { ModalFilterComponent } from '../modal-filter/modal-filter.component';
 
 @Component({
   selector: 'app-search-results',
@@ -16,6 +17,8 @@ export class SearchResultsComponent implements OnInit {
 
   products: Product[];
   totalResults = 0;
+  limit = 10;
+  offset = 0;
 
   constructor(private productService: ProductService,
               public notificacionSnackBar: MatSnackBar,
@@ -36,6 +39,8 @@ export class SearchResultsComponent implements OnInit {
               objectSearch[key] = params[key];
           }
           this.search(objectSearch);
+          this.limit = objectSearch.limit != null ? objectSearch.limit : 10;
+          this.offset = objectSearch.offset != null ? objectSearch.offset / objectSearch.limit : 0;
       }
     );
   }
@@ -78,11 +83,21 @@ export class SearchResultsComponent implements OnInit {
   }
 
   movePage(event: PageEvent) {
-    // total de resultados
-    console.log(event.length);
-    // elementos a cargar por pagina
-    console.log(event.pageSize);
-    // indice de l a pagina de acuedo a la cantidad de elementos por pagina
-    console.log(event.pageIndex);
+    this.route.queryParams.subscribe(
+      params => {
+          const objectSearch = new Search();
+          // tslint:disable-next-line:forin
+          for (const key in params) {
+              objectSearch[key] = params[key];
+          }
+          objectSearch.limit = event.pageSize;
+          objectSearch.offset = event.pageSize * event.pageIndex;
+          this.router.navigate(['search'], { queryParams: objectSearch });
+      }
+    );
+  }
+
+  filter() {
+    const dialogRef = this.dialog.open( ModalFilterComponent, { panelClass: 'modalFilter' });
   }
 }
