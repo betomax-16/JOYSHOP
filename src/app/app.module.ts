@@ -40,6 +40,7 @@ import { UserService } from './services/user.service';
 import { UploadService } from './services/upload.service';
 import { ProductService } from './services/product.service';
 import { TokenService } from './services/token.service';
+import { CommentaryService } from './services/commentary.service';
 
 import { environment } from '../environments/environment';
 
@@ -86,7 +87,8 @@ import { environment } from '../environments/environment';
     UserService,
     UploadService,
     ProductService,
-    TokenService
+    TokenService,
+    CommentaryService
   ],
   entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent, ModalImageComponent, ModalFilterComponent],
   bootstrap: [AppComponent]

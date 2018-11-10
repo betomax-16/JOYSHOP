@@ -95,6 +95,56 @@
     order: 3;
 }
 
+.content-commentary {
+    width: 100%;
+    padding: 0 45px;
+    box-sizing: border-box;
+}
+
+.content-form .full-width {
+    width: 75%;
+}
+
+.ok {
+    display: inline;
+    background-color: rgb(186, 125, 184);
+    color: #fff;
+}
+
+.ok:hover {
+    background-color: rgb(159, 107, 158);
+}
+
+.content-commentaries {
+    display: flex;
+    flex-direction: column;
+    background-color: #ebebeb;
+    border-radius: 5px;
+    padding: 15px 10px 8px 10px;
+    width: 94%;
+    margin-bottom: 25px;
+}
+
+.commentary,.answer {
+    position: relative;
+}
+
+.answer {
+    margin-left: 5px;
+}
+
+.commentary div,.answer div{
+    position: absolute;
+    top: 1px;
+    margin-left: 30px;
+}
+
+.answer div .date {
+    font-size: 10px;
+    color: #7b7b7b;
+    margin-left: 5px;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {} 
 
@@ -109,6 +159,7 @@
     .basic-info-product {
         flex-direction: row;
         margin-bottom: 10px;
+        min-height: 300px;
     }
     .info-product {
         flex-direction: column;
@@ -120,6 +171,9 @@
         height: 300px;
         margin: 0 10px;
     }
+    .content-form .full-width {
+        width: 85%;
+    }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -130,6 +184,7 @@
     .basic-info-product {
         flex-direction: row;
         margin-bottom: 10px;
+        min-height: 400px;
     }
     .info-product {
         flex-direction: column;
@@ -153,16 +208,20 @@
         height: 400px;
         margin: 0 20px;
     }
+    .content-form .full-width {
+        width: 90%;
+    }
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1500px) {
     .title {
         display: block;
     }
     .basic-info-product {
         flex-direction: row;
         margin-bottom: 10px;
+        min-height: 500px;
     }
     .info-product {
         flex-direction: column;
@@ -185,5 +244,8 @@
         flex: 1 1 auto;
         height: 500px;
         margin: 0 25px;
+    }
+    .content-form .full-width {
+        width: 95%;
     }
 }

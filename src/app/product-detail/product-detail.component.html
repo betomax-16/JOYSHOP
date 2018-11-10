@@ -31,7 +31,7 @@
         </div>
     </div>
     <mat-accordion class="full-width small">
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]=true>
             <mat-expansion-panel-header>
                 <mat-panel-title>Descripción</mat-panel-title>
                 <mat-panel-description></mat-panel-description>
@@ -39,4 +39,30 @@
             <p>{{product.description}}</p>
         </mat-expansion-panel>
     </mat-accordion>
+    <div class="content-commentary">
+        <h3>Comentarios.</h3>
+        <div class="content-form" *ngIf="isLogged()">
+            <mat-form-field class="full-width">
+                <textarea matInput placeholder="Comentario" [(ngModel)]="commentary.comment" name="commentary"></textarea>
+            </mat-form-field>
+            <button class="ok"  matTooltip="Send commentary" mat-stroked-button color="primary" (click)="saveCommentary()">Enviar</button>
+        </div>
+        <div class="content-commentaries">
+            <div *ngFor="let commentary of oldCommentaries">
+                <div class="commentary">
+                    <i class="material-icons">mode_comment</i> 
+                    <div>
+                        <span>{{commentary.comment}}</span>
+                    </div>
+                </div>
+                <div class="answer" *ngIf="commentary.answer">
+                    <i class="material-icons">comment</i> 
+                    <div>
+                        <span>{{commentary.answer}}</span>
+                        <span class="date">{{commentary.updatedAt | date:'dd/MM/yyyy HH:mm'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -11,6 +11,10 @@ export class TokenService {
 
     decodeToken() {
         const token = this.localStorageService.get<string>('token');
-        return jwtDecode(token);
+        if (token) {
+            return jwtDecode(token);
+        } else {
+            return null;
+        }
     }
 }

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
+import { Commentary } from '../models/commentary';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
+import { CommentaryService } from '../services/commentary.service';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,19 +14,24 @@ import { ModalImageComponent } from '../modal-image/modal-image.component';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-
+  oldCommentaries: Commentary[];
+  commentary: Commentary;
   product: Product;
   listFilesFirebase: string[];
   imageSelected: string;
   index = 0;
 
   constructor(private productService: ProductService,
+              private commentaryService: CommentaryService,
+              private tokenService: TokenService,
               public notificacionSnackBar: MatSnackBar,
               public dialog: MatDialog,
               private route: ActivatedRoute) {
+        this.commentary = new Commentary();
         this.product = new Product();
         this.listFilesFirebase = [];
         this.imageSelected = '';
+        this.oldCommentaries = [];
     }
 
   ngOnInit() {
@@ -40,6 +48,9 @@ export class ProductDetailComponent implements OnInit {
                 this.imageSelected = this.listFilesFirebase[0];
               });
             }
+            this.commentaryService.getCommentariesByProduct(this.product._id).subscribe(commentaries => {
+              this.oldCommentaries = commentaries.reverse();
+            });
           });
         }
       );
@@ -66,5 +77,19 @@ export class ProductDetailComponent implements OnInit {
     dialogRef.componentInstance.listFilesFirebase = this.listFilesFirebase;
     dialogRef.componentInstance.imageSelected = this.imageSelected;
     dialogRef.componentInstance.index = this.index;
+  }
+
+  saveCommentary() {
+    const token = this.tokenService.decodeToken();
+    this.commentary.idProduct = this.product._id;
+    this.commentary.idUser = token.sub;
+    this.commentaryService.create(this.commentary).subscribe(commentary => {
+      this.oldCommentaries.splice(0, 0, commentary);
+      this.commentary = new Commentary();
+    });
+  }
+
+  isLogged() {
+    return this.tokenService.decodeToken();
   }
 }
