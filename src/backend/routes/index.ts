@@ -2,6 +2,7 @@ import * as express from 'express';
 import { MiddlewareAuth } from '../middlewares/auth';
 import { UsuarioCtrl } from '../controllers/user';
 import { ProductoCtrl } from '../controllers/product';
+import { CommentaryCtrl } from '../controllers/commentary';
 
 const api = express.Router();
 
@@ -34,5 +35,18 @@ api.route('/public/product/:idProduct')
     .get( ProductoCtrl.getPublicProduct );
 api.route('/search')
     .get( ProductoCtrl.search );
+
+// Commentaries
+api.route('/product/:idProduct/commentary')
+    .get( CommentaryCtrl.getCommentariesByProduct )
+    .post( MiddlewareAuth.isAuth, CommentaryCtrl.createCommentary );
+api.route('/commentary/:idCommentary')
+    .put( MiddlewareAuth.isAuth, CommentaryCtrl.updateCommentary );
+api.route('/new/commentary')
+    .get( MiddlewareAuth.isAuth, CommentaryCtrl.getNewCommentaries );
+
+// Answers
+api.route('/new/answer')
+    .get( MiddlewareAuth.isAuth, CommentaryCtrl.getNewAnswers );
 
 export const RouterApi = api;

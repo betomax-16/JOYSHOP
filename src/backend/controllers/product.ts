@@ -1,5 +1,6 @@
 import { User } from '../models/user';
 import { Product } from '../models/product';
+import { Commentary } from '../models/commentary';
 import { FormatError } from '../models/formarError';
 import { UrlQueryService } from '../services/urlQueryService';
 // import { UrlQueryService } from '../services/urlQueryService';
@@ -217,7 +218,10 @@ function deleteProduct(req, res) {
       if (product) {
         product.remove((errorP) => {
           if (errorP) { return res.status(500).send({errorP}); }
-          return res.status(200).send({message: 'Product deleted.'});
+          Commentary.deleteMany({idProduct: mongoose.Types.ObjectId(idProduct)}, (errorC) => {
+            if (errorC) { return res.status(500).send({errorC}); }
+            return res.status(200).send({message: 'Product deleted.'});
+          });
         });
       } else {
         errors.push(new FormatError('idProduct', 'Product not found.'));
