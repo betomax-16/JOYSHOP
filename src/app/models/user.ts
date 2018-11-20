@@ -8,7 +8,7 @@ export class User {
         public password?: string,
         public birthdate?: string,
         public createdAt?: string,
-        public photo?: string,
+        public image?: string,
         public confirm?: boolean,
         public _id?: string
     ) {}
