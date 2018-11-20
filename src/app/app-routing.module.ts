@@ -13,6 +13,8 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ListCommentariesComponent } from './list-commentaries/list-commentaries.component';
+import { ProductAnswerComponent } from './product-answer/product-answer.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full'},
@@ -23,6 +25,8 @@ const routes: Routes = [
     { path: 'search', component: SearchResultsComponent },
     { path: 'artist/:id', component: UserDataComponent },
     { path: 'product/:id', component: ProductDetailComponent },
+    { path: 'commentary', component: ListCommentariesComponent, canActivate: [AuthGuard] },
+    { path: 'answer/:id', component: ProductAnswerComponent, canActivate: [AuthGuard] },
     { path: 'comingsoon', component: ComingSoonComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
   ];

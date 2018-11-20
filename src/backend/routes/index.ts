@@ -41,12 +41,17 @@ api.route('/product/:idProduct/commentary')
     .get( CommentaryCtrl.getCommentariesByProduct )
     .post( MiddlewareAuth.isAuth, CommentaryCtrl.createCommentary );
 api.route('/commentary/:idCommentary')
+    .get( CommentaryCtrl.getCommentary )
     .put( MiddlewareAuth.isAuth, CommentaryCtrl.updateCommentary );
 api.route('/new/commentary')
     .get( MiddlewareAuth.isAuth, CommentaryCtrl.getNewCommentaries );
+api.route('/new/commentary/withoutanswer')
+    .get( MiddlewareAuth.isAuth, CommentaryCtrl.getCommentariesWithoutAnswer );
 
 // Answers
 api.route('/new/answer')
     .get( MiddlewareAuth.isAuth, CommentaryCtrl.getNewAnswers );
+api.route('/old/answer')
+    .get( MiddlewareAuth.isAuth, CommentaryCtrl.getOldAnswers );
 
 export const RouterApi = api;

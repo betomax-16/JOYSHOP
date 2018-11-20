@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { Commentary } from '../models/commentary';
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { CommentaryService } from '../services/commentary.service';
 import { TokenService } from '../services/token.service';
@@ -13,7 +13,8 @@ import { TokenService } from '../services/token.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit  {
+
   oldCommentaries: Commentary[];
   commentary: Commentary;
   product: Product;

@@ -30,6 +30,8 @@ import { UserDataComponent } from './user-data/user-data.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ModalImageComponent } from './modal-image/modal-image.component';
 import { ModalFilterComponent } from './modal-filter/modal-filter.component';
+import { ListCommentariesComponent } from './list-commentaries/list-commentaries.component';
+import { ProductAnswerComponent } from './product-answer/product-answer.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -41,6 +43,7 @@ import { UploadService } from './services/upload.service';
 import { ProductService } from './services/product.service';
 import { TokenService } from './services/token.service';
 import { CommentaryService } from './services/commentary.service';
+import { ShareCommentariesService } from './services/sharedCommentaries.service';
 
 import { environment } from '../environments/environment';
 
@@ -61,7 +64,9 @@ import { environment } from '../environments/environment';
     UserDataComponent,
     ProductDetailComponent,
     ModalImageComponent,
-    ModalFilterComponent
+    ModalFilterComponent,
+    ListCommentariesComponent,
+    ProductAnswerComponent
   ],
   imports: [
     AppRoutingModule,
@@ -88,7 +93,8 @@ import { environment } from '../environments/environment';
     UploadService,
     ProductService,
     TokenService,
-    CommentaryService
+    CommentaryService,
+    ShareCommentariesService
   ],
   entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent, ModalImageComponent, ModalFilterComponent],
   bootstrap: [AppComponent]

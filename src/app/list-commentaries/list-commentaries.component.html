@@ -1,0 +1,16 @@
+<div class="content-commentaries">
+    <h1 class="title">Comentarios.</h1>
+    <div class="commentary" [ngClass]="{'no-viwed': (!commentary.viwedClient && commentary.answer) || !commentary.viwedPO }" *ngFor="let commentary of othersCommentaries" (click)="openCommentary(commentary)">
+        <div class="content-image">
+            <img *ngIf="!commentary.answer" [src]="commentary.user.image" alt="" class="user-image">
+            <img *ngIf="commentary.answer" [src]="commentary.product.user.image" alt="" class="user-image">
+        </div>
+        <div>
+            <span *ngIf="!commentary.answer" class="user-name">{{commentary.user.name + ' ' + commentary.user.lastname }}</span>
+            <span *ngIf="commentary.answer" class="user-name">{{commentary.product.user.name + ' ' + commentary.product.user.lastname }}</span>
+            <span *ngIf="!commentary.answer"> comento en: </span>
+            <span *ngIf="commentary.answer"> respondio en: </span>
+            <span class="product">{{ commentary.product.name }}</span>
+        </div>
+    </div>
+</div>

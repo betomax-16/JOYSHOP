@@ -28,6 +28,10 @@
             <div class="nav-list-logout" (click)="logout()" *ngIf="logged"><span>Logout</span></div>
             <a mat-list-item routerLink="user/edit">Perfil</a>
             <a mat-list-item routerLink="user/products">Mis productos</a>
+            <a mat-list-item routerLink="commentary">
+                <span *ngIf="!existNews()">Comentarios</span>
+                <span *ngIf="existNews()" matBadge="{{news.length}}" matBadgeOverlap="false">Comentarios</span>
+            </a>
             <a mat-list-item routerLink="comingsoon">Otros</a>
         </mat-nav-list>
         </mat-sidenav>

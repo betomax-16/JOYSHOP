@@ -1,0 +1,102 @@
+.title {
+    font-size: 40px;
+    color: #5e3c5d;
+}
+
+.content-commentaries {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.commentary {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8ecff;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.commentary:hover {
+    background-color: #ede3f3;
+}
+
+.content-image {
+    background-image: url('https://images.vexels.com/media/users/3/137047/isolated/preview/5831a17a290077c646a48c4db78a81bb-perfil-de-usuario-blue-icon-by-vexels.png');
+    background-size: cover;
+    position: relative;
+    background-color: aliceblue;
+    overflow: hidden;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.content-image .user-image {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    margin: auto;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    z-index: 0;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 5px;
+    display: block;
+}
+
+.product {
+    font-weight: bold;
+    margin-left: 5px;
+    color: #56376b;
+}
+
+.no-viwed {
+    background-color: #d5b6e7;
+}
+
+.no-viwed:hover {
+    background-color: #bea0cf;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 530px) {
+    .user-name {
+        display: inline;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .user-name {
+        display: inline;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .user-name {
+        display: inline;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .user-name {
+        display: inline;
+    }
+}

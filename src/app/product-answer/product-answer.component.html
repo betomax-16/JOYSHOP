@@ -1,0 +1,46 @@
+<div class="content">
+    <div class="basic-info-product">
+        <div class="info-product">
+            <h1 class="title">{{commentary.product.name}}</h1>
+            <div class="price">
+                <span>Precio: </span>${{commentary.product.price}}
+            </div>
+            <div class="stock">
+                <span>Stock: </span>{{commentary.product.stock}}
+            </div>
+            <mat-accordion class="full-width">
+                <mat-expansion-panel [expanded]=true>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Descripción</mat-panel-title>
+                        <mat-panel-description></mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>{{commentary.product.description}}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <div class="content-commentary">
+        <h3>Comentario.</h3>
+        <div class="content-commentaries">
+            <div class="header-user">
+                <div class="content-image">
+                    <img [src]="commentary.user.image" alt="" class="user-image">
+                </div>
+                <span class="user-name">{{commentary.user.name + ' ' + commentary.user.lastname}}</span>
+            </div>
+            <div class="commentary">
+                <span>{{commentary.comment}}</span>
+            </div>
+            <div class="answer" *ngIf="isLogged()">
+                <mat-form-field class="full-width-text-area">
+                    <textarea matInput placeholder="Respuesta" [(ngModel)]="commentary.answer" name="answer"></textarea>
+                </mat-form-field>
+                <button class="ok"  matTooltip="Send answer" mat-stroked-button color="primary" (click)="saveAnswer()">
+                    <i class="material-icons">
+                        send
+                    </i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

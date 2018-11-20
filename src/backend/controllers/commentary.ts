@@ -65,6 +65,61 @@ function validate(req, update?): FormatError[] {
   return errors;
 }
 
+function getCommentary(req, res) {
+  const idCommentary = req.params.idCommentary;
+  const errors: Array<FormatError> = [];
+  const errorIdProduct: FormatError = validateMongoId(idCommentary, 'idCommentary');
+  if (errorIdProduct) { errors.push(errorIdProduct); }
+  if (errors.length > 0) { return res.status(500).send({errors}); }
+
+  let query;
+  query = Commentary.aggregate([
+    {
+        $lookup:
+           {
+             from: 'products',
+             localField: 'idProduct',
+             foreignField: '_id',
+             as: 'product'
+           }
+    },
+    { $unwind : '$product' },
+    { $match : { '_id': mongoose.Types.ObjectId(idCommentary) } },
+    {
+        $lookup:
+           {
+             from: 'users',
+             localField: 'product.idUser',
+             foreignField: '_id',
+             as: 'product.user'
+           }
+    },
+    { $unwind : '$product.user' },
+    {
+        $lookup:
+           {
+             from: 'users',
+             localField: 'idUser',
+             foreignField: '_id',
+             as: 'user'
+           }
+    },
+    { $unwind : '$user' }
+  ]);
+
+  query.exec().then(
+    commentaries => {
+      if (commentaries) {
+        return res.status(200).send(commentaries[0]);
+      } else {
+        errors.push(new FormatError('idCommentary', 'Commentary not found.'));
+        return res.status(404).send({errors});
+      }
+    },
+    err => res.status(500).send({err})
+  );
+}
+
 function getCommentariesByProduct(req, res) {
   const idProduct = req.params.idProduct;
   const errors: Array<FormatError> = [];
@@ -151,7 +206,7 @@ function getNewAnswers(req, res) {
            }
     },
     { $unwind : '$product' },
-    { $match : { idUser: mongoose.Types.ObjectId(idUsuario), viwedClient: false } },
+    { $match : { idUser: mongoose.Types.ObjectId(idUsuario), viwedClient: false, answer: { $exists: true } } },
     {
         $lookup:
            {
@@ -230,10 +285,113 @@ function updateCommentary(req, res) {
     });
 }
 
+function getCommentariesWithoutAnswer(req, res) {
+  const idUsuario = req.user;
+  const errors: Array<FormatError> = [];
+  const errorIdUser: FormatError = validateMongoId(idUsuario, 'idUser');
+  if (errorIdUser) { errors.push(errorIdUser); }
+  if (errors.length > 0) { return res.status(500).send({errors}); }
+
+  let query;
+  query = Commentary.aggregate([
+    {
+        $lookup:
+           {
+             from: 'products',
+             localField: 'idProduct',
+             foreignField: '_id',
+             as: 'product'
+           }
+    },
+    { $unwind : '$product' },
+    { $match : { 'product.idUser': mongoose.Types.ObjectId(idUsuario), viwedPO: true, answer: { $exists: false } } },
+    {
+        $lookup:
+           {
+             from: 'users',
+             localField: 'product.idUser',
+             foreignField: '_id',
+             as: 'product.user'
+           }
+    },
+    { $unwind : '$product.user' },
+    {
+        $lookup:
+           {
+             from: 'users',
+             localField: 'idUser',
+             foreignField: '_id',
+             as: 'user'
+           }
+    },
+    { $unwind : '$user' }
+  ]);
+
+  query.exec().then(
+    commentaries => {
+        return res.status(200).send(commentaries);
+    },
+    err => res.status(500).send({err})
+  );
+}
+
+function getOldAnswers(req, res) {
+  const idUsuario = req.user;
+  const errors: Array<FormatError> = [];
+  const errorIdUser: FormatError = validateMongoId(idUsuario, 'idUser');
+  if (errorIdUser) { errors.push(errorIdUser); }
+  if (errors.length > 0) { return res.status(500).send({errors}); }
+
+  let query;
+  query = Commentary.aggregate([
+    {
+        $lookup:
+           {
+             from: 'products',
+             localField: 'idProduct',
+             foreignField: '_id',
+             as: 'product'
+           }
+    },
+    { $unwind : '$product' },
+    { $match : { idUser: mongoose.Types.ObjectId(idUsuario), viwedClient: true, answer: { $exists: true } } },
+    {
+        $lookup:
+           {
+             from: 'users',
+             localField: 'product.idUser',
+             foreignField: '_id',
+             as: 'product.user'
+           }
+    },
+    { $unwind : '$product.user' },
+    {
+        $lookup:
+           {
+             from: 'users',
+             localField: 'idUser',
+             foreignField: '_id',
+             as: 'user'
+           }
+    },
+    { $unwind : '$user' },
+    { $limit : 20 }
+  ]);
+
+  query.exec().then(
+    commentaries => {
+        return res.status(200).send(commentaries);
+    },
+    err => res.status(500).send({err})
+  );
+}
 export const CommentaryCtrl = {
     getCommentariesByProduct,
     getNewCommentaries,
     createCommentary,
     updateCommentary,
-    getNewAnswers
+    getNewAnswers,
+    getCommentariesWithoutAnswer,
+    getOldAnswers,
+    getCommentary
 };

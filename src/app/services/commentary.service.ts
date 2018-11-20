@@ -19,6 +19,10 @@ export class CommentaryService {
                             .set('Authorization', this.localStorageService.get('token'));
     }
 
+    getCommentary(idCommentary) {
+        return this.http.get<Commentary>(`/api/commentary/${idCommentary}`);
+    }
+
     getCommentariesByProduct(idProduct) {
         return this.http.get<Commentary[]>(`/api/product/${idProduct}/commentary`);
     }
@@ -41,5 +45,15 @@ export class CommentaryService {
     update(commentary: Commentary) {
         this.newHeader();
         return this.http.put<Commentary>(`/api/commentary/${commentary._id}`, commentary, {headers: this.headers});
+    }
+
+    getCommentariesWithoutAnswer() {
+        this.newHeader();
+        return this.http.get<Commentary[]>(`/api/new/commentary/withoutanswer`, {headers: this.headers});
+    }
+
+    getOldAnswers() {
+        this.newHeader();
+        return this.http.get<Commentary[]>(`/api/old/answer`, {headers: this.headers});
     }
 }
