@@ -32,6 +32,7 @@ import { ModalImageComponent } from './modal-image/modal-image.component';
 import { ModalFilterComponent } from './modal-filter/modal-filter.component';
 import { ListCommentariesComponent } from './list-commentaries/list-commentaries.component';
 import { ProductAnswerComponent } from './product-answer/product-answer.component';
+import { ModalRecoverPasswordComponent } from './modal-recover-password/modal-recover-password.component';
 
 // Providers
 import { AuthService } from './auth/auth.service';
@@ -66,7 +67,8 @@ import { environment } from '../environments/environment';
     ModalImageComponent,
     ModalFilterComponent,
     ListCommentariesComponent,
-    ProductAnswerComponent
+    ProductAnswerComponent,
+    ModalRecoverPasswordComponent
   ],
   imports: [
     AppRoutingModule,
@@ -96,7 +98,14 @@ import { environment } from '../environments/environment';
     CommentaryService,
     ShareCommentariesService
   ],
-  entryComponents: [ModalLoginComponent, ModalRegisterUserComponent, ModalConfirmComponent, ModalImageComponent, ModalFilterComponent],
+  entryComponents: [
+    ModalLoginComponent,
+    ModalRegisterUserComponent,
+    ModalConfirmComponent,
+    ModalImageComponent,
+    ModalFilterComponent,
+    ModalRecoverPasswordComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

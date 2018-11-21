@@ -2,7 +2,7 @@
     <h1 class="title-phone">Edición de datos personales.</h1>
     <div>
         <div class="photo">
-            <img matTooltip="Change photo" [src]="imageUrl" alt="foto_perfil" (click)="openFile()">
+            <img matTooltip="Cambiar foto" [src]="imageUrl" alt="foto_perfil" (click)="openFile()">
         </div>
         <mat-progress-bar *ngIf="imagePercentOk()"
             class="example-margin"
@@ -23,13 +23,13 @@
                 <input type="email" matInput placeholder="Email" [(ngModel)]="user.email" name="email">
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input type="password" matInput placeholder="Password" [(ngModel)]="user.password" name="password">
+                <input type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" name="password">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input type="tel" matInput placeholder="Teléfono" [(ngModel)]="user.phone" name="phone">
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <input matInput [matDatepicker]="picker" placeholder="Selecciona una fecha">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -39,7 +39,7 @@
                 </mat-select>
             </mat-form-field>
             <input #inputFile class="file" type="file" name="photo" (change)="onChangeFile($event)" accept="image/*">
-            <button class="button ok" mat-stroked-button matTooltip="Update data" color="primary" (click)="save()">
+            <button class="button ok" mat-stroked-button matTooltip="Actualizar datos" color="primary" (click)="save()">
                 <i class="material-icons">
                     done
                 </i>

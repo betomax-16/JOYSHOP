@@ -6,10 +6,10 @@
                 <img [src]="imageSelected" alt="">
             </div>
             <div *ngIf="!onlyImage()" class="button before">
-                <i class="material-icons" matTooltip="Previous image." (click)="before()">navigate_before</i>
+                <i class="material-icons" matTooltip="Anterior" (click)="before()">navigate_before</i>
             </div>
             <div *ngIf="!onlyImage()" class="button next">
-                <i class="material-icons" matTooltip="Next image." (click)="next()">navigate_next</i>
+                <i class="material-icons" matTooltip="Siguiente" (click)="next()">navigate_next</i>
             </div>
         </div>
         <div class="info-product">
@@ -45,7 +45,7 @@
             <mat-form-field class="full-width">
                 <textarea matInput placeholder="Comentario" [(ngModel)]="commentary.comment" name="commentary"></textarea>
             </mat-form-field>
-            <button class="ok"  matTooltip="Send commentary" mat-stroked-button color="primary" (click)="saveCommentary()">Enviar</button>
+            <button class="ok"  matTooltip="Enviar comentario" mat-stroked-button color="primary" (click)="saveCommentary()">Enviar</button>
         </div>
         <div class="content-commentaries">
             <div *ngFor="let commentary of oldCommentaries">

@@ -267,7 +267,7 @@ function passRecovery(req, res) {
     usuario.password = pass;
     usuario.save((error, usuarioStored) => {
       if (error) { return res.status(500).send({error}); }
-      EmailService.SendEmail(usuario.email, 'Nueva contraseña', 'nuevaContrasena.html',
+      EmailService.SendEmail(usuario.email, 'Nueva contraseña', 'newPassword.html',
                              {nombre: usuario.name, pass: pass});
       res.status(200).send({usuario: usuarioStored});
     });

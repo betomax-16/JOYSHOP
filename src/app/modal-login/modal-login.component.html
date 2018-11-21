@@ -1,14 +1,17 @@
 <div class="content-modal">
-    <h1 class="title">Login</h1>
+    <h1 class="title">Autenticación</h1>
     <form>
         <div class="content-form">
             <mat-form-field class="full-width input-login">
                 <input type="email" matInput placeholder="Email" [(ngModel)]="user.email" name="email">
             </mat-form-field>
             <mat-form-field class="full-width input-login">
-                <input type="password" matInput placeholder="Password" [(ngModel)]="user.password" name="password">
+                <input type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" name="password">
             </mat-form-field>
-            <button class="button ok" mat-stroked-button color="primary" (click)="login()">Ok</button>
+            <div>
+                <button class="button ok" mat-stroked-button color="primary" (click)="login()">Ok</button>
+                <button class="button recover" mat-stroked-button color="primary" (click)="openRecover()">pass</button>
+            </div>            
         </div>
     </form>
 </div>

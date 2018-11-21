@@ -12,12 +12,12 @@
                 <p><span>Stock: </span>{{product.stock}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button matTooltip="Edit product" (click)="update(product)">
+                <button mat-button matTooltip="Editar producto" (click)="update(product)">
                     <i class="material-icons">
                         edit
                     </i>Editar
                 </button>
-                <button mat-button matTooltip="Delete product" class="delete" (click)="delete(product)">
+                <button mat-button matTooltip="Eliminar producto" class="delete" (click)="delete(product)">
                     <i class="material-icons">
                         cancel
                     </i>Eliminar
@@ -28,7 +28,7 @@
 </div>
 <button class="add" 
         mat-fab color="accent"
-        matTooltip="Add new product"
+        matTooltip="Nuevo producto"
         (click)="add()">
     <i class="material-icons">add</i>
 </button>

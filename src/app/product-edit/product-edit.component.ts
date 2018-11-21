@@ -90,17 +90,40 @@ export class ProductEditComponent implements OnInit {
       this.productService.update(this.product).subscribe(product => {
         // tslint:disable-next-line:max-line-length
         const actionsObs = this.selectedFilesDeleteFirabase.map(image => this.productService.removeImage(idUser, this.product._id, image.id));
-        const resultsObs = forkJoin(actionsObs);
+        if (actionsObs.length) {
+          const resultsObs = forkJoin(actionsObs);
 
-        resultsObs.subscribe(results => {
+          resultsObs.subscribe(results => {
+            console.log(results);
+            const actions = this.selectedFilesLocales.map(file => this.productService.upload(idUser, this.product._id, file.idName, file));
+            if (actions.length) {
+              const resultsPro = Promise.all(actions);
+
+              resultsPro.then(data => {
+                console.log(data);
+                this.showMessage('Product updated successfully.', 3000);
+                this.router.navigate(['user/products']);
+              });
+            } else {
+              this.showMessage('Product updated successfully.', 3000);
+              this.router.navigate(['user/products']);
+            }
+          });
+        } else {
           const actions = this.selectedFilesLocales.map(file => this.productService.upload(idUser, this.product._id, file.idName, file));
-          const resultsPro = Promise.all(actions);
+          if (actions.length) {
+            const resultsPro = Promise.all(actions);
 
-          resultsPro.then(data => {
+            resultsPro.then(data => {
+              console.log(data);
+              this.showMessage('Product updated successfully.', 3000);
+              this.router.navigate(['user/products']);
+            });
+          } else {
             this.showMessage('Product updated successfully.', 3000);
             this.router.navigate(['user/products']);
-          });
-        });
+          }
+        }
       }, error =>  this.showMessage(error.message, 3000));
     } else {
       this.showMessage('You need at least one image.', 3000);

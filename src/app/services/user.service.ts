@@ -43,6 +43,9 @@ export class UserService {
     // Usuarios public
     publicUser(id) {
         return this.http.get<User>(`/api/user/${id}`);
+    }
 
+    recoveryPass(usuario) {
+        return this.http.put<User>(`/api/passrecovery`, usuario);
     }
 }
