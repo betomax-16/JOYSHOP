@@ -34,7 +34,7 @@ export class ModalRegisterUserComponent implements OnInit {
       this.localStorageService.set('token', res['token']);
       this.shareLoginService.sendLogin(true);
       this.shareLoginService.sendUser(res['user']);
-      this.router.navigate(['comingsoon']);
+      this.router.navigate(['user/edit']);
     }, error => {
       error.error.errors.forEach(err => {
         this.showMessage(err.message, 5000);

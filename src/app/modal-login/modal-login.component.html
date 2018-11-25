@@ -8,9 +8,9 @@
             <mat-form-field class="full-width input-login">
                 <input type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" name="password">
             </mat-form-field>
-            <div>
-                <button class="button ok" mat-stroked-button color="primary" (click)="login()">Ok</button>
-                <button class="button recover" mat-stroked-button color="primary" (click)="openRecover()">pass</button>
+            <div class="botonera">
+                <button class="button ok" mat-stroked-button color="primary" (click)="login()">Ingresar</button>
+                <span class="recover" (click)="openRecover()">¿Olvidaste tu contraseña?</span>
             </div>            
         </div>
     </form>

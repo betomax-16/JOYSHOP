@@ -31,6 +31,7 @@ export class UserDataComponent implements OnInit {
         const idUser = params.id;
         this.userService.publicUser(idUser).subscribe(user => {
           this.user = user;
+          this.user.password = '';
           this.uploadService.getUrl(idUser).subscribe(url => {
             this.imageUrl = url;
           }, error =>  this.showMessage(error.message, 3000));

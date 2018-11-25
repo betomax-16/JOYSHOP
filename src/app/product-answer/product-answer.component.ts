@@ -24,6 +24,7 @@ export class ProductAnswerComponent implements OnInit  {
               public notificacionSnackBar: MatSnackBar,
               private SocketIoService: AppSocketIoService,
               public dialog: MatDialog,
+              private router: Router,
               private route: ActivatedRoute) {
         this.commentary = new Commentary();
         this.commentary.product = new Product();
@@ -50,14 +51,19 @@ export class ProductAnswerComponent implements OnInit  {
         this.commentaryService.getCommentary(commentary._id).subscribe( commentaryFull => {
           this.SocketIoService.sendAnswer( commentaryFull );
         });
-        this.notificacionSnackBar.open( 'The comment was answered.', '', {
+        this.notificacionSnackBar.open( 'El comentario fue respondido exitosamente.', '', {
           duration: 3000,
         } );
+        this.router.navigate(['product', commentary.idProduct]);
       } else {
-        this.notificacionSnackBar.open( 'There was a problem responding to the comment.', '', {
+        this.notificacionSnackBar.open( 'Existio un problema al responder.', '', {
           duration: 3000,
         } );
       }
+    }, err => {
+      this.notificacionSnackBar.open( err.message, '', {
+        duration: 3000,
+      } );
     });
   }
 

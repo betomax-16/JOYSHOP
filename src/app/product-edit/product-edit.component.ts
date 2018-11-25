@@ -101,11 +101,11 @@ export class ProductEditComponent implements OnInit {
 
               resultsPro.then(data => {
                 console.log(data);
-                this.showMessage('Product updated successfully.', 3000);
+                this.showMessage('Producto actualizado exitosamente.', 3000);
                 this.router.navigate(['user/products']);
               });
             } else {
-              this.showMessage('Product updated successfully.', 3000);
+              this.showMessage('Producto actualizado exitosamente.', 3000);
               this.router.navigate(['user/products']);
             }
           });
@@ -116,17 +116,17 @@ export class ProductEditComponent implements OnInit {
 
             resultsPro.then(data => {
               console.log(data);
-              this.showMessage('Product updated successfully.', 3000);
+              this.showMessage('Producto actualizado exitosamente.', 3000);
               this.router.navigate(['user/products']);
             });
           } else {
-            this.showMessage('Product updated successfully.', 3000);
+            this.showMessage('Producto actualizado exitosamente.', 3000);
             this.router.navigate(['user/products']);
           }
         }
       }, error =>  this.showMessage(error.message, 3000));
     } else {
-      this.showMessage('You need at least one image.', 3000);
+      this.showMessage('Necesitas al menos una imagen.', 3000);
     }
   }
 

@@ -47,7 +47,7 @@
             </mat-form-field>
             <button class="ok"  matTooltip="Enviar comentario" mat-stroked-button color="primary" (click)="saveCommentary()">Enviar</button>
         </div>
-        <div class="content-commentaries">
+        <div class="content-commentaries" *ngIf="oldCommentaries.length">
             <div *ngFor="let commentary of oldCommentaries">
                 <div class="commentary">
                     <i class="material-icons">mode_comment</i> 

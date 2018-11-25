@@ -13,10 +13,20 @@
 .ok {
     background-color:rgb(205, 77, 162);
     width: 75px;
+    margin-right: 10px;
 }
 
 .ok:hover {
     background-color: rgb(156, 59, 123);
+}
+
+.clear {
+    background-color:rgb(77, 85, 205);
+    width: 75px;
+}
+
+.clear:hover {
+    background-color: rgb(54, 60, 148);
 }
 
 .title {

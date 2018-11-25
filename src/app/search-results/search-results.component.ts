@@ -7,6 +7,7 @@ import { TokenService } from '../services/token.service';
 import { UploadService } from '../services/upload.service';
 import { Search } from '../models/search';
 import { ModalFilterComponent } from '../modal-filter/modal-filter.component';
+import { MatPaginatorIntl } from '@angular/material';
 
 @Component({
   selector: 'app-search-results',
@@ -26,11 +27,18 @@ export class SearchResultsComponent implements OnInit {
               private uploadService: UploadService,
               private router: Router,
               private route: ActivatedRoute,
+              private matPaginatorIntl: MatPaginatorIntl,
               public dialog: MatDialog) {
     this.products = [];
   }
 
   ngOnInit() {
+    this.matPaginatorIntl.itemsPerPageLabel = 'Artículos por página:';
+    this.matPaginatorIntl.nextPageLabel = 'Siguiente página';
+    this.matPaginatorIntl.lastPageLabel = 'Página anterior';
+    this.matPaginatorIntl.firstPageLabel = 'Primera Página';
+    this.matPaginatorIntl.lastPageLabel = 'Última Página';
+    this.matPaginatorIntl.getRangeLabel = this.spanishRangeLabel;
     this.route.queryParams.subscribe(
       params => {
           const objectSearch = new Search();
@@ -99,5 +107,16 @@ export class SearchResultsComponent implements OnInit {
 
   filter() {
     const dialogRef = this.dialog.open( ModalFilterComponent, { panelClass: 'modalFilter' });
+  }
+
+  spanishRangeLabel = (page: number, pageSize: number, length: number) => {
+    if (length === 0 || pageSize === 0) { return `0 de ${length}`; }
+    length = Math.max(length, 0);
+    const startIndex = page * pageSize;
+    // If the start index exceeds the list length, do not try and fix the end index to the end.
+    const endIndex = startIndex < length ?
+        Math.min(startIndex + pageSize, length) :
+        startIndex + pageSize;
+    return `${startIndex + 1} - ${endIndex} de ${length}`;
   }
 }

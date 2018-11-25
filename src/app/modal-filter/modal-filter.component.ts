@@ -39,4 +39,14 @@ export class ModalFilterComponent implements OnInit {
     this.objectSearch['price>'] = this.min;
     this.router.navigate(['search'], { queryParams: this.objectSearch });
   }
+
+  clear() {
+    // tslint:disable-next-line:forin
+    for (const key in this.objectSearch) {
+      if (key !== 'q') {
+        delete this.objectSearch[key];
+      }
+    }
+    this.router.navigate(['search'], { queryParams: this.objectSearch });
+  }
 }

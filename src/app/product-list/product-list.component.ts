@@ -89,10 +89,14 @@ export class ProductListComponent implements OnInit {
                 });
                 // tslint:disable-next-line:triple-equals
                 this.products = this.products.filter(productI => productI._id != product._id);
-                this.showMessage(res['message'], 3000);
+                this.showMessage('Producto eliminado exitosamente.', 3000);
               }, error =>  this.showMessage(error.message, 3000));
             }
         } );
+  }
+
+  existResults() {
+    return this.products.length > 0;
   }
 
   showMessage(message: string, duration: number) {

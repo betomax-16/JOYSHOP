@@ -77,6 +77,10 @@ export class ListCommentariesComponent implements OnInit, OnDestroy {
     }
   }
 
+  existResults() {
+    return this.othersCommentaries.length > 0;
+  }
+
   ngOnDestroy() {
     this.$commentaries.unsubscribe();
   }

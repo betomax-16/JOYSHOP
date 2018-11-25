@@ -1,4 +1,4 @@
-<div class="content-commentaries">
+<div *ngIf="existResults()" class="content-commentaries">
     <h1 class="title">Comentarios.</h1>
     <div class="commentary" [ngClass]="{'no-viwed': (!commentary.viwedClient && commentary.answer) || !commentary.viwedPO }" *ngFor="let commentary of othersCommentaries" (click)="openCommentary(commentary)">
         <div class="content-image">
@@ -13,4 +13,7 @@
             <span class="product">{{ commentary.product.name }}</span>
         </div>
     </div>
+</div>
+<div *ngIf="!existResults()" class="content-empty">
+    <h1>Sin comentarios o respuestas.</h1>
 </div>

@@ -3,6 +3,18 @@
     color: #5e3c5d;
 }
 
+.content-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+h1 {
+    font-size: 45px;
+    color: rgb(216, 214, 214);
+}
+
 .content-commentaries {
     display: flex;
     flex-direction: column;

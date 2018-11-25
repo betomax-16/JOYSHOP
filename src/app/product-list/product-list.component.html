@@ -1,4 +1,4 @@
-<div class="my-products">
+<div *ngIf="existResults()" class="my-products">
     <h1>Mis productos</h1>
     <div class="results-products">
         <mat-card class="example-card" *ngFor="let product of products">
@@ -32,3 +32,6 @@
         (click)="add()">
     <i class="material-icons">add</i>
 </button>
+<div *ngIf="!existResults()" class="content-empty">
+    <h1>Sin productos.</h1>
+</div>

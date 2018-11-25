@@ -62,7 +62,7 @@ export class ProductCreateComponent implements OnInit {
         const results = Promise.all(actions);
 
         results.then(data => {
-          this.showMessage('Product created successfully.', 3000);
+          this.showMessage('Producto creado exitosamente.', 3000);
           this.router.navigate(['user/products']);
         });
       }, error => {
@@ -75,7 +75,7 @@ export class ProductCreateComponent implements OnInit {
         }
       });
     } else {
-      this.showMessage('You need at least one image.', 3000);
+      this.showMessage('Necesitas al menos una imagen.', 3000);
     }
   }
 
