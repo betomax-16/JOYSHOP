@@ -11,6 +11,9 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
 import { Commentary } from './models/commentary';
 import { ShareCommentariesService } from './services/sharedCommentaries.service';
+import { AppSocketIoService } from './services/socketIo.service';
+import { UploadService } from './services/upload.service';
+const Push = require('push.js');
 
 @Component({
   selector: 'app-root',
@@ -32,6 +35,8 @@ export class AppComponent implements OnInit, OnDestroy {
               public authService: AuthService,
               private router: Router,
               public dialog: MatDialog,
+              private SocketIoService: AppSocketIoService,
+              private uploadService: UploadService,
               private changeDetectorRef: ChangeDetectorRef,
               private media: MediaMatcher) {
                 this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -44,11 +49,43 @@ export class AppComponent implements OnInit, OnDestroy {
     this.shareLoginService.loggedSource.subscribe(logged => {
       this.logged = this.authService.isAuthenticated();
       if (this.logged) {
+        this.SocketIoService.connect();
+        this.SocketIoService.getCommentary().subscribe( commentary => {
+          this.news.push(commentary);
+          this.shareCommentariesService.sendCommentaries(this.news);
+          this.uploadService.getUrl(commentary['idUser']).subscribe(url => {
+            Push.create('Nuevo Comentario', {
+              body: commentary['user']['name'] + ' ' + commentary['user']['lastname'] + ' comento en: ' + commentary['product']['name'],
+              icon: url,
+              timeout: 10000,
+              onClick: function () {
+                window.location.href = 'answer/' + commentary[ '_id' ];
+                this.close();
+              }
+            });
+          });
+        });
+        this.SocketIoService.getAnswer().subscribe( answer => {
+          this.news.push(answer);
+          this.shareCommentariesService.sendCommentaries(this.news);
+          this.uploadService.getUrl(answer['product']['idUser']).subscribe(url => {
+            Push.create('Nueva Respuesta', {
+              // tslint:disable-next-line:max-line-length
+              body: answer['product']['user']['name'] + ' ' + answer['product']['user']['lastname'] + ' respondio en: ' + answer['product']['name'],
+              icon: url,
+              timeout: 10000,
+              onClick: function () {
+                window.location.href = 'product/' + answer[ 'idProduct' ];
+                this.close();
+              }
+            });
+          });
+        });
+
         this.commentaryService.getNewAnswers().subscribe(answers => {
           this.news = this.news.concat(answers);
           this.commentaryService.getNewCommentaries().subscribe(commentaries => {
             this.news =  this.news.concat(commentaries);
-            console.log(this.news);
             this.shareCommentariesService.sendCommentaries(this.news);
           });
         });
@@ -66,6 +103,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.shareLoginService.sendLogin(false);
     this.shareLoginService.sendUser({});
     this.sidenav.close();
+    this.SocketIoService.disconect();
     this.router.navigate(['/']);
   }
 

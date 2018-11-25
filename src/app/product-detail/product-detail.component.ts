@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { CommentaryService } from '../services/commentary.service';
 import { TokenService } from '../services/token.service';
+import { AppSocketIoService } from '../services/socketIo.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -26,6 +27,7 @@ export class ProductDetailComponent implements OnInit  {
               private commentaryService: CommentaryService,
               private tokenService: TokenService,
               public notificacionSnackBar: MatSnackBar,
+              private SocketIoService: AppSocketIoService,
               public dialog: MatDialog,
               private route: ActivatedRoute) {
         this.commentary = new Commentary();
@@ -85,6 +87,9 @@ export class ProductDetailComponent implements OnInit  {
     this.commentary.idProduct = this.product._id;
     this.commentary.idUser = token.sub;
     this.commentaryService.create(this.commentary).subscribe(commentary => {
+      this.commentaryService.getCommentary(commentary._id).subscribe( commentaryFull => {
+        this.SocketIoService.sendCommentary( commentaryFull );
+      });
       this.oldCommentaries.splice(0, 0, commentary);
       this.commentary = new Commentary();
     });

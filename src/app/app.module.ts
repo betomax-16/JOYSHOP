@@ -45,6 +45,7 @@ import { ProductService } from './services/product.service';
 import { TokenService } from './services/token.service';
 import { CommentaryService } from './services/commentary.service';
 import { ShareCommentariesService } from './services/sharedCommentaries.service';
+import { AppSocketIoService } from './services/socketIo.service';
 
 import { environment } from '../environments/environment';
 
@@ -96,7 +97,8 @@ import { environment } from '../environments/environment';
     ProductService,
     TokenService,
     CommentaryService,
-    ShareCommentariesService
+    ShareCommentariesService,
+    AppSocketIoService
   ],
   entryComponents: [
     ModalLoginComponent,

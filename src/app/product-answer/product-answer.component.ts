@@ -7,6 +7,7 @@ import { CommentaryService } from '../services/commentary.service';
 import { TokenService } from '../services/token.service';
 import { User } from '../models/user';
 import { UploadService } from '../services/upload.service';
+import { AppSocketIoService } from '../services/socketIo.service';
 
 @Component({
   selector: 'app-product-answer',
@@ -21,6 +22,7 @@ export class ProductAnswerComponent implements OnInit  {
               private tokenService: TokenService,
               private uploadService: UploadService,
               public notificacionSnackBar: MatSnackBar,
+              private SocketIoService: AppSocketIoService,
               public dialog: MatDialog,
               private route: ActivatedRoute) {
         this.commentary = new Commentary();
@@ -45,6 +47,9 @@ export class ProductAnswerComponent implements OnInit  {
   saveAnswer() {
     this.commentaryService.update(this.commentary).subscribe(commentary => {
       if (commentary) {
+        this.commentaryService.getCommentary(commentary._id).subscribe( commentaryFull => {
+          this.SocketIoService.sendAnswer( commentaryFull );
+        });
         this.notificacionSnackBar.open( 'The comment was answered.', '', {
           duration: 3000,
         } );

@@ -17,6 +17,12 @@ enableProdMode();
 
 // Express server
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {
+  serveClient: false,
+  wsEngine: 'ws', // uws is not supported since it is a native module
+  path: '/napi'
+});
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -58,6 +64,44 @@ app.get('*', (req, res) => {
 });
 
 // Start up the Node server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Node Express server listening on http://localhost:${PORT}`);
+});
+
+// Socket io events
+let usuarios = [];
+io.on('connection', function(socket) {
+  usuarios.push({id: socket.id, idUser: socket.handshake.query.idUser});
+  console.log('a user connected');
+  console.log(usuarios);
+
+  socket.on('disconnect', function() {
+    // quitar al usaurio del arreglo
+    usuarios = usuarios.filter(function(usuario) {
+      return usuario.id !== socket.id;
+    });
+    console.log('user disconnected');
+  });
+
+  // Emisión de una comentario
+  socket.on('sendCommentary', (req) => {
+    const usuariosAux = usuarios.filter(function(usuario) {
+      return usuario.idUser === req.product.idUser;
+    });
+    usuariosAux.forEach(usuario => {
+      // sending to individual socketid (private message)
+      io.to(usuario.id).emit('getCommentary', req);
+    });
+  });
+
+  // Emisión de una respuesta
+  socket.on('sendAnswer', (res) => {
+    const usuariosAux = usuarios.filter(function(usuario) {
+      return usuario.idUser === res.idUser;
+    });
+    usuariosAux.forEach(usuario => {
+      // sending to individual socketid (private message)
+      io.to(usuario.id).emit('getAnswer', res);
+    });
+  });
 });

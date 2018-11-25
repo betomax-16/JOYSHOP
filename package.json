@@ -50,7 +50,9 @@
     "mongoose": "^5.3.4",
     "nodemailer": "^4.6.8",
     "normalize.css": "^8.0.0",
+    "push.js": "^1.0.9",
     "rxjs": "^6.2.2",
+    "socket.io": "^2.1.1",
     "validator": "^10.8.0",
     "zone.js": "^0.8.26"
   },
