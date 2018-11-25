@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material';
 import { Ng4FilesService, Ng4FilesConfig, Ng4FilesSelected, Ng4FilesStatus } from '../ng4-files';
 import { TokenService } from '../services/token.service';
 import { forkJoin } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product-edit',
@@ -32,6 +33,7 @@ export class ProductEditComponent implements OnInit {
               private ng4FilesService: Ng4FilesService,
               private tokenService: TokenService,
               private router: Router,
+              private spinner: NgxSpinnerService,
               private route: ActivatedRoute) {
     this.product = new Product();
     this.selectedFilesLocales = [];
@@ -82,6 +84,7 @@ export class ProductEditComponent implements OnInit {
     // console.log(this.selectedFilesDeleteFirabase);
     // console.log('------------BD~s---------------');
     if (this.existImages()) {
+      this.spinner.show();
       const aux = this.listFilesFirebase.map(image => image.id);
       this.selectedFilesNames = aux.concat(this.selectedFilesNames);
       this.product.images = this.selectedFilesNames;
@@ -101,10 +104,12 @@ export class ProductEditComponent implements OnInit {
 
               resultsPro.then(data => {
                 console.log(data);
+                this.spinner.hide();
                 this.showMessage('Producto actualizado exitosamente.', 3000);
                 this.router.navigate(['user/products']);
               });
             } else {
+              this.spinner.hide();
               this.showMessage('Producto actualizado exitosamente.', 3000);
               this.router.navigate(['user/products']);
             }
@@ -116,15 +121,20 @@ export class ProductEditComponent implements OnInit {
 
             resultsPro.then(data => {
               console.log(data);
+              this.spinner.hide();
               this.showMessage('Producto actualizado exitosamente.', 3000);
               this.router.navigate(['user/products']);
             });
           } else {
+            this.spinner.hide();
             this.showMessage('Producto actualizado exitosamente.', 3000);
             this.router.navigate(['user/products']);
           }
         }
-      }, error =>  this.showMessage(error.message, 3000));
+      }, error =>  {
+        this.spinner.hide();
+        this.showMessage(error.message, 3000);
+      });
     } else {
       this.showMessage('Necesitas al menos una imagen.', 3000);
     }

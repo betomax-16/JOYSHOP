@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng4FilesModule } from './ng4-files';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 // Firebase
 import { AngularFireModule } from 'angularfire2';
@@ -85,7 +86,8 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule,
-    Ng4FilesModule
+    Ng4FilesModule,
+    NgxSpinnerModule
   ],
   providers: [
     AuthService,

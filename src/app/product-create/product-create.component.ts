@@ -7,6 +7,7 @@ import { Ng4FilesService } from '../ng4-files/services/ng4-files.service';
 import { Ng4FilesConfig } from '../ng4-files/declarations/ng4-files-config';
 import { Ng4FilesSelected, Ng4FilesStatus } from '../ng4-files/declarations/ng4-files-selected';
 import { TokenService } from '../services/token.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product-create',
@@ -30,6 +31,7 @@ export class ProductCreateComponent implements OnInit {
               public notificacionSnackBar: MatSnackBar,
               private ng4FilesService: Ng4FilesService,
               private tokenService: TokenService,
+              private spinner: NgxSpinnerService,
               private router: Router) {
     this.product = new Product();
     this.selectedFiles = [];
@@ -55,6 +57,7 @@ export class ProductCreateComponent implements OnInit {
 
   save() {
     if (this.existImages()) {
+      this.spinner.show();
       this.productService.insert(this.product).subscribe(product => {
         const idUser = this.tokenService.decodeToken().sub;
         const idProduct = product._id;
@@ -62,10 +65,12 @@ export class ProductCreateComponent implements OnInit {
         const results = Promise.all(actions);
 
         results.then(data => {
+          this.spinner.hide();
           this.showMessage('Producto creado exitosamente.', 3000);
           this.router.navigate(['user/products']);
         });
       }, error => {
+        this.spinner.hide();
         if (error.error.errors) {
           error.error.errors.forEach(err => {
             this.showMessage(err.message, 3000);
